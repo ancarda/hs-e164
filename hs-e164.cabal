@@ -1,0 +1,28 @@
+name:                hs-e164
+version:             0.1.0
+synopsis:            E.164 Parsing
+description:         A complete library for E.164 parsing and validation.
+homepage:            https://github.com/ancarda/hs-e164#readme
+license:             MIT
+license-file:        LICENSE
+author:              Mark Dain
+maintainer:          mark@markdain.net
+copyright:           (c) 2018 Mark Dain
+category:            Telephony
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Telephony.PSTN.E164
+  build-depends:       base >= 4.7 && < 5
+  default-language:    Haskell2010
+  ghc-options:         -Werror -Weverything -Wno-safe
+  default-extensions:  InstanceSigs
+    , NoImplicitPrelude
+    , Safe
+
+source-repository head
+  type:     git
+  location: https://github.com/ancarda/hs-e164
