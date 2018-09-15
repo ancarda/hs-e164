@@ -8,8 +8,8 @@ _An E.164 analyzer and validator written in Haskell_
 
 An [E.164](https://en.wikipedia.org/wiki/E.164) analyzer and validator written
 in Haskell. This package allows you to parse a phone number string and get back
-an `E164Number` which can be used with functions such as `country`, `prefix,`
-and `number.
+an `E164Number` which can be used with functions such as `country`, `prefix`,
+and `number`.
 
 If the parser returns `Nothing`, the given string isn't a valid E.164 number.
 
