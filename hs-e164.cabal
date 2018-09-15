@@ -23,6 +23,19 @@ library
     , NoImplicitPrelude
     , Safe
 
+test-suite test-cloudpbx
+  main-is:             Spec.hs
+  type:                exitcode-stdio-1.0
+  build-depends:       base >=4.7 && <5
+    , hspec >= 2.5.5
+    , HUnit >= 1.6.0.0
+  hs-source-dirs:      src, test
+  default-language:    Haskell2010
+  ghc-options:         -Werror -Wall
+  default-extensions:  InstanceSigs
+    , NoImplicitPrelude
+  other-modules:       Telephony.PSTN.E164
+
 source-repository head
   type:     git
   location: https://github.com/ancarda/hs-e164

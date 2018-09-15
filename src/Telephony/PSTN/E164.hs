@@ -82,7 +82,7 @@ type Number = String
 -- particular service or use rather than general purpose use for a 'Country'.
 -- For example, @+1-800-XXX-XXXX@ is 'TollFree'.
 data Purpose = TollFree | PremiumRate
-  deriving (Eq)
+  deriving (Eq, Show)
 
 isUSCA :: String -> Maybe (Either Country Purpose)
 isUSCA "205" = Just $ Left "US" -- Alabama, US
