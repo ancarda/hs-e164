@@ -415,4 +415,3 @@ isUSCA_ :: String -> Maybe (Prefix, Either Country Purpose)
 isUSCA_ s = do
   let x = isUSCA $ take 3 $ drop 2 s
   if isNothing x then Nothing else Just (1, fromJust x)
-

@@ -44,9 +44,13 @@ main = hspec $ do
       country (justParseE164 "1-202-555-8601")  `shouldBe` Just "US"
       purpose (justParseE164 "1-202-555-8601")  `shouldBe` Nothing
 
-      show    (justParseE164 "+1.210.555.7890") `shouldBe` "(210) 555-7890"
-      show    (justParseE164 "+1.800.555.7890") `shouldBe` "1-800-555-7890"
+      show    (justParseE164 "+1.210.555.7890") `shouldBe` "+1.2105557890"
+      show    (justParseE164 "+1.800.555.7890") `shouldBe` "+1.8005557890"
       show    (justParseE164 "+1.368.555.7890") `shouldBe` "+1.3685557890"
+
+      human   (justParseE164 "+1.210.555.7890") `shouldBe` "(210) 555-7890"
+      human   (justParseE164 "+1.800.555.7890") `shouldBe` "1-800-555-7890"
+      human   (justParseE164 "+1.368.555.7890") `shouldBe` "+1.3685557890"
 
       e164arpa (justParseE164 "+1.210.555.7890") `shouldBe`
         "0.9.8.7.5.5.5.0.1.2.1.e164.arpa."

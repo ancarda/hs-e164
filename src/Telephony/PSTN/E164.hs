@@ -7,6 +7,7 @@
 module Telephony.PSTN.E164 (
   E164Number,
   parseE164,
+  human,
   Country,
   country,
   Prefix,
@@ -31,6 +32,30 @@ import Data.Tuple    (fst, uncurry)
 import Telephony.PSTN.E164.Types (Country, E164Number (E164Number), Number,
   Prefix, Purpose(TollFree, PremiumRate))
 import Telephony.PSTN.E164.NANP  (isUSCA_)
+
+-- | Resolves an E164Number to a human representable string.
+--
+-- This function pays attention to 'Prefix', 'Country', and 'Purpose' to
+-- generate a Human comfortable string of this number. For example, +1 U.S.
+-- numbers are returned as @(XXX) XXX-XXXX@ but @+1 800@ numbers are returned
+-- as @1-800-XXX-XXXX@ as an international prefix is very common for that
+-- purpose as 1-800 numbers aren't tied to a specific country.
+--
+-- This function attempts to make a best-effort guess of how most people would
+-- write the given number as. No accuracy garauntees are, or can, be made.
+-- For custom formatting, you can use 'country', 'purpose', and 'prefix' to
+-- extract information from an 'E164Number'. If you have suggestions on how
+-- a specific number may be formatted differently, please raise an issue on
+-- GitHub.
+--
+-- For numbers where no specific implementation exists, a generic
+-- implementation is used, which returns a string like @+XXX.XXXXXXXXXXXX@.
+human :: E164Number -> String
+human (E164Number _ (Left  c) n) | c == "US" =
+  "(" ++ take 3 n ++ ") " ++ take 3 (drop 3 n) ++ "-" ++ drop 6 n
+human (E164Number p (Right _) n) | p == 1    =
+  "1-" ++ take 3 n ++ "-" ++ take 3 (drop 3 n) ++ "-" ++ drop 6 n
+human n = show n
 
 candidates :: String -> Maybe (Prefix, Either Country Purpose)
 candidates s | take 2 s == "+1"   = isUSCA_ s
