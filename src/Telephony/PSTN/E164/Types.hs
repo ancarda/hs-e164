@@ -24,7 +24,7 @@ import Text.Show   (Show, show)
 -- such as @US@ for the United States of America.
 type Country = String
 
--- | The right hand side of a phone number, e.g. without the 'Prefix'. For
+-- | The right-hand side of a phone number, e.g. without the 'Prefix'. For
 -- example, if @+1@ is the prefix, Number will be @555-555-5555@.
 --
 -- This is stored without any spaces.

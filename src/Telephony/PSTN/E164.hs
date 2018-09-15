@@ -42,7 +42,7 @@ import Telephony.PSTN.E164.NANP  (isUSCA_)
 -- purpose as 1-800 numbers aren't tied to a specific country.
 --
 -- This function attempts to make a best-effort guess of how most people would
--- write the given number as. No accuracy garauntees are, or can, be made.
+-- write the given number as. No accuracy guarantees are, or can, be made.
 -- For custom formatting, you can use 'country', 'purpose', and 'prefix' to
 -- extract information from an 'E164Number'. If you have suggestions on how
 -- a specific number may be formatted differently, please raise an issue on
