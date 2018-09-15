@@ -1,13 +1,15 @@
 module Main where
 
+import Data.Either   (Either(Left))
 import Data.Function (($))
-import Data.Maybe (Maybe(Nothing, Just), fromJust)
-import Data.String (String)
-import Test.Hspec (hspec, describe, it, shouldBe)
-import Text.Show (show)
-import System.IO (IO)
+import Data.Maybe    (Maybe(Nothing, Just), fromJust)
+import Data.String   (String)
+import Test.Hspec    (hspec, describe, it, shouldBe)
+import Text.Show     (show)
+import System.IO     (IO)
 
 import Telephony.PSTN.E164
+import Telephony.PSTN.E164.NANP
 
 justParseE164 :: String -> E164Number
 justParseE164 s = fromJust $ parseE164 s
@@ -27,10 +29,12 @@ main = hspec $ do
       {-
       onlyNumbers "+1 (202) 555-8601"   `shouldBe` "12025558601"
       filter isNumeric "1-800-555-8601" `shouldBe` "18005558601"
+      -}
 
       isUSCA "202" `shouldBe` (Just $ Left "US")
       isUSCA "403" `shouldBe` (Just $ Left "CA")
 
+      {-
       candidates "+447447099060" `shouldBe` Just (44, Left "GB")
       candidates "+12025558601"  `shouldBe` Just (1,  Left "US")
       candidates "+14035558601"  `shouldBe` Just (1,  Left "CA")

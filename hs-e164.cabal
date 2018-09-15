@@ -22,6 +22,8 @@ library
   default-extensions:  InstanceSigs
     , NoImplicitPrelude
     , Safe
+  other-modules:       Telephony.PSTN.E164.Types
+    , Telephony.PSTN.E164.NANP
 
 test-suite test-cloudpbx
   main-is:             Spec.hs
@@ -34,7 +36,9 @@ test-suite test-cloudpbx
   ghc-options:         -Werror -Wall
   default-extensions:  InstanceSigs
     , NoImplicitPrelude
-  other-modules:       Telephony.PSTN.E164
+  other-modules:       Telephony.PSTN.E164.Types
+    , Telephony.PSTN.E164.NANP
+    , Telephony.PSTN.E164
 
 source-repository head
   type:     git
