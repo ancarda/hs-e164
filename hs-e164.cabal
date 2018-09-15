@@ -1,5 +1,5 @@
 name:                hs-e164
-version:             0.1.0
+version:             0.1.1
 synopsis:            E.164 Parsing
 description:         A complete library for E.164 parsing and validation.
 homepage:            https://github.com/ancarda/hs-e164#readme

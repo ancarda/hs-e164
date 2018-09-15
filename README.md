@@ -4,7 +4,7 @@ _An E.164 analyzer and validator written in Haskell_
 
 [![Written in Haskell](https://img.shields.io/badge/language-Haskell-blue.svg)](https://haskell.org/)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-teal.svg)](https://choosealicense.com/licenses/mit/)
-[![Version 0.1.0](https://img.shields.io/badge/version-0.1.0-orange.svg)]()
+[![Version 0.1.1](https://img.shields.io/badge/version-0.1.1-orange.svg)]()
 
 An [E.164](https://en.wikipedia.org/wiki/E.164) analyzer and validator written
 in Haskell. This package allows you to parse a phone number string and get back
