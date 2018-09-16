@@ -13,32 +13,40 @@ build-type:          Simple
 extra-source-files:  README.md
 cabal-version:       >=1.10
 
-library
+library internal
   hs-source-dirs:      lib
   exposed-modules:     Telephony.PSTN.E164
+    , Telephony.PSTN.E164.Types
+    , Telephony.PSTN.E164.NANP
   build-depends:       base >= 4.7 && < 5
   default-language:    Haskell2010
   ghc-options:         -Werror -Weverything -Wno-safe
   default-extensions:  InstanceSigs
     , NoImplicitPrelude
     , Safe
-  other-modules:       Telephony.PSTN.E164.Types
-    , Telephony.PSTN.E164.NANP
 
-test-suite test-cloudpbx
+library
+  reexported-modules:  Telephony.PSTN.E164
+  build-depends:       base >= 4.7 && < 5
+    , internal
+  default-language:    Haskell2010
+  ghc-options:         -Werror -Weverything -Wno-safe
+  default-extensions:  InstanceSigs
+    , NoImplicitPrelude
+    , Safe
+
+test-suite test
   main-is:             Spec.hs
   type:                exitcode-stdio-1.0
   build-depends:       base >=4.7 && <5
     , hspec >= 2.5.5
     , HUnit >= 1.6.0.0
-  hs-source-dirs:      lib, test
+    , internal
+  hs-source-dirs:      test
   default-language:    Haskell2010
   ghc-options:         -Werror -Wall
   default-extensions:  InstanceSigs
     , NoImplicitPrelude
-  other-modules:       Telephony.PSTN.E164.Types
-    , Telephony.PSTN.E164.NANP
-    , Telephony.PSTN.E164
 
 source-repository head
   type:     git
